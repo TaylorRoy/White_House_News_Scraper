@@ -86,6 +86,20 @@ app.get("/articles", function (req, res) {
     });
 });
 
+// Route for deleting all Articles from the articles.js collection
+app.delete("/deleteArticles", function (req, res) {
+  // Remove every document in the Articles collection
+  db.Article.remove({})
+    .then(function (dbArticle) {
+      // If we were able to successfully remove Articles, send them back to the client
+      res.json(dbArticle);
+    })
+    .catch(function (err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
 // Route for grabbing a specific Article by id, populate it with it's note
 app.get("/articles/:id", function (req, res) {
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
@@ -102,6 +116,8 @@ app.get("/articles/:id", function (req, res) {
     });
 });
 
+var noteID = "";
+
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function (req, res) {
   // Create a new note and pass the req.body to the entry
@@ -114,6 +130,8 @@ app.post("/articles/:id", function (req, res) {
     })
     .then(function (dbArticle) {
       // If we were able to successfully update an Article, send it back to the client
+     
+      noteID = dbArticle.id
       res.json(dbArticle);
     })
     .catch(function (err) {
@@ -122,10 +140,10 @@ app.post("/articles/:id", function (req, res) {
     });
 });
 
-
 // Route for deleting an Article's associated Note
-app.delete("/articles/:id", function (req, res) {
-  console.log("in delete route", req.params.id);
+app.delete("/deleteNote/:id", function (req, res) {
+  
+  console.log("in delete route", noteID);
   // Create a new note and pass the req.body to the entry
   db.Note.remove({_id: req.params.id}, function(err, response){
     if (err) {
