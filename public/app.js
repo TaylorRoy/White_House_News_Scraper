@@ -27,7 +27,7 @@ $(document).on("click", ".displayButton", function () {
       // Display the apropos information on the page
       console.log(data[i]);
       $("#articles").append("<p class='article_infomation' data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-      $("#articles").append("<button type=button class=addNoteButton btn btn-default data-id='" + data[i]._id + "'>" + "Add Note" + "</button>");
+      $("#articles").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data[i]._id + "'>" + "Add Note" + "</button>");
     }
   });
 })
@@ -44,7 +44,8 @@ $(document).on("click", ".deleteButton", function (event) {
       // Display the apropos information on the page
       console.log(data[i]);
     }
-    $("#articles").append("<p>" + "All articles have been removed from the collection" + "</p>");
+    $("#articles").empty();
+    $("#articles").prepend("<p>" + "All articles have been removed from the collection" + "</p>");
   });
 });
 
@@ -71,11 +72,9 @@ $(document).on("click", ".addNoteButton", function () {
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-      $("#notes").append("<button data-id='" + data._id + "' id='closenote'>Close</button>");
-
-
-      $("#notes").append("<button data-id='" + data.note._id + "' id='deleteNote'>Delete Note</button>");
+      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data._id + "' id='closenote'>Close</button>");
+      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data.note._id + "' id='deleteNote'>Delete Note</button>");
 
       // If there's a note in the article
       if (data.note) {

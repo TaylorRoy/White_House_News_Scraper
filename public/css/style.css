@@ -1,10 +1,25 @@
-body { background-color: #F2F6D0 }
+#navTitle {
+  text-align: center;
+  width: 100%;
+}
+
+#navButtons {
+  text-align: center;
+  width: 100%;
+}
+      
       #wrapper {
         width: 960px;
         margin-left: auto;
         margin-right: auto;
-        padding-top: 5%;
       }
+
+#scrapeTitle {
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
       #articles {
         display: inline-block;
         overflow: auto;
