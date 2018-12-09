@@ -27,7 +27,8 @@ $(document).on("click", ".displayButton", function () {
       // Display the apropos information on the page
       console.log(data[i]);
       $("#articles").append("<p class='article_infomation' data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
-      $("#articles").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data[i]._id + "'>" + "Add Note" + "</button>");
+      $("#articles").append("<button type='button' class= 'addNoteButton btn btn-default btn-danger' data-id='" + data[i]._id + "'>" + "Add Note" + "</button>");
+      $("#articles").append("<button type='button' class= 'deleteArticleButton btn btn-default' data-id='" + data[i]._id + "'>" + "Delete Article" + "</button>");
     }
   });
 })
@@ -66,15 +67,15 @@ $(document).on("click", ".addNoteButton", function () {
       console.log(data);
       // console.log("note id", data.note._id);
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h2 id='noteTitle'>" + data.title + "</h2>");
       // An input to enter a new title
       $("#notes").append("<input id='titleinput' name='title' >");
       // A textarea to add a new note body
       $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data._id + "' id='savenote'>Save Note</button>");
-      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data._id + "' id='closenote'>Close</button>");
-      $("#notes").append("<button type='button' class= 'addNoteButton btn btn-default' data-id='" + data.note._id + "' id='deleteNote'>Delete Note</button>");
+      $("#notes").append("<button type='button' class= 'saveNoteButton btn btn-default btn-danger' data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append("<button type='button' class= 'closeNoteButton btn btn-default' data-id='" + data._id + "' id='closenote'>Close</button>");
+      $("#notes").append("<button type='button' class= 'deleteNoteButton btn btn-default btn-primary' data-id='" + data.note._id + "' id='deleteNote'>Delete Note</button>");
 
       // If there's a note in the article
       if (data.note) {
@@ -84,6 +85,20 @@ $(document).on("click", ".addNoteButton", function () {
         $("#bodyinput").val(data.note.body);
       }
     });
+});
+
+//route removes specific article from Articles.js Collection
+$(document).on("click", ".deleteArticleButton", function(){
+  
+  var articleID = $(this).attr("data-id");
+  $.ajax({
+    method: "DELETE",
+    url : "/deleteArticle/" + articleID
+  }).then(function(data){
+    console.log(data);
+    // redirect to refresh with display articles path
+    
+  })
 });
 
 // When you click the savenote button

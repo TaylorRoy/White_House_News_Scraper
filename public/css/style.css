@@ -1,4 +1,23 @@
+.mainTitle {
+  font-family: 'Merriweather', serif;
+  font-size: 60px;
+}
+
+.navbar {
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top-width: 0px;
+  border-bottom-width: 0px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
 #navTitle {
+  background-color: #dd0808;
   text-align: center;
   width: 100%;
 }
@@ -7,39 +26,78 @@
   text-align: center;
   width: 100%;
 }
-      
-      #wrapper {
-        width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+
+.containerMain {
+  margin-top: -20px;
+}
+
+#wrapper {
+  background-color: #5b81bf;    
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 #scrapeTitle {
   width: 50%;
   float: left;
   text-align: center;
+  font-family: 'Merriweather', serif;
 }
 
-      #articles {
-        display: inline-block;
-        overflow: auto;
-        width: 60%;
-        height: 700px;
-      }
-      #notes {
-        float: right;
-        width: 30%;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: #FCF5C7;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
+#articles {
+  display: inline-block;
+  overflow: auto;
+  width: 50%;
+  height: 700px;
+}
+
+.article_infomation {
+  margin-left: 5%;
+  margin-top: 10px;
+}
+
+.addNoteButton {
+  margin-left: 5%;
+  /* margin-bottom: 10px; */
+}
+      
+#notes {
+  float: right;
+  width: 50%;
+}
+
+#noteTitle {
+  margin-left: 10%;
+}
+
+#titleinput {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#bodyinput {
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 5px;
+}
+
+.saveNoteButton {
+  margin-left: 10%;
+}
+      
+textarea, input {
+  display: block;
+  width: 100%;
+  background-color: #fff;
+}
+      
+input {
+  height: 36px;
+  font-size: 24px;
+}
+      
+textarea {
+  height: 200px;
+  font-size: 18px;
+}

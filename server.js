@@ -116,6 +116,18 @@ app.get("/articles/:id", function (req, res) {
     });
 });
 
+//route for removing a specific article from the database
+app.delete("/deleteArticle/:id", function(req, res){
+  db.Article.remove({_id: req.params.id}, function(err, response){
+    if (err){
+      console.log(err);
+    }
+    else {
+      res.send(response);
+    }
+  })
+})
+
 var noteID = "";
 
 // Route for saving/updating an Article's associated Note
