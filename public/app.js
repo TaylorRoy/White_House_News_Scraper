@@ -16,8 +16,8 @@ $(document).on("click", ".scrapeButton", function (event) {
 });
 
 //Display all articles in Articles.js collection
-$(document).on("click", ".displayButton", function () {
-
+function display(){
+  $("#articles").empty();
   $.ajax({
     method: "GET",
     url: "/articles"
@@ -31,7 +31,9 @@ $(document).on("click", ".displayButton", function () {
       $("#articles").append("<button type='button' class= 'deleteArticleButton btn btn-default' data-id='" + data[i]._id + "'>" + "Delete Article" + "</button>");
     }
   });
-})
+}
+
+$(document).on("click", ".displayButton", display)
 
 // Delete articles from Articles.js collection
 $(document).on("click", ".deleteButton", function (event) {
@@ -97,7 +99,7 @@ $(document).on("click", ".deleteArticleButton", function(){
   }).then(function(data){
     console.log(data);
     // redirect to refresh with display articles path
-    
+    display();
   })
 });
 
